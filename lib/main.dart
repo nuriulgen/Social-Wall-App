@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'core/constants/app/app_constants.dart';
+import 'ui/home/view/home_view.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,7 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Social Wall',
+      debugShowCheckedModeBanner: false,
+      title: AppConstants.appTitle,
+      home: HomeView(),
     );
   }
 }
