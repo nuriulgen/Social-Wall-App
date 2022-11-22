@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'core/constants/app/app_constants.dart';
 import 'ui/home/view/home_view.dart';
+import 'core/constants/app/app_constants.dart';
 
 void main() => runApp(const MyApp());
 

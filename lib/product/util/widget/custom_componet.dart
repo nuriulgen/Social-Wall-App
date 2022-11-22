@@ -16,8 +16,8 @@ class CustomComponents extends StatelessWidget {
       required this.commentCount,
       required this.commentTitle,
       required this.commentDescription,
-      required this.commentLikeCount,
-      required this.commentDislikeCount,
+      this.commentLikeCount,
+      this.commentDislikeCount,
       required this.commentImageUrl})
       : super(key: key);
 
@@ -26,14 +26,14 @@ class CustomComponents extends StatelessWidget {
   final String profileImageUrl;
   final String description;
   final String postImageUrl;
-  final String likeCount;
-  final String dislikeCount;
-  final String commentCount;
+  final int likeCount;
+  final int dislikeCount;
+  final int commentCount;
   final String commentTitle;
   final String commentDescription;
   final String commentImageUrl;
-  final String commentLikeCount;
-  final String commentDislikeCount;
+  final int? commentLikeCount;
+  final int? commentDislikeCount;
 
   @override
   Widget build(BuildContext context) {
@@ -64,15 +64,15 @@ class CustomComponents extends StatelessWidget {
           children: [
             Padding(
               padding: context.paddingXHorizontal + context.paddingX2Left,
-              child: Text(likeCount),
+              child: Text(likeCount.toString()),
             ),
             Padding(
               padding: context.paddingXHorizontal + context.paddingX2Left,
-              child: Text(dislikeCount),
+              child: Text(dislikeCount.toString()),
             ),
             Padding(
               padding: context.paddingXHorizontal + context.paddingXLeft,
-              child: Text(commentCount),
+              child: Text(commentCount.toString()),
             ),
           ],
         ),

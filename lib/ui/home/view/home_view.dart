@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_social_wall/ui/home/view/test_view.dart';
+import '../../../core/init/network/model/post_model.dart';
+import '../../../core/init/network/service/post_service.dart';
 import '../../../core/constants/extension/color_extension.dart';
 import '../../../core/constants/extension/context_extension.dart';
 import '../../../core/constants/extension/string_extension.dart';
 import '../../../core/constants/image/custom_network_image.dart';
+import '../../../core/init/network/service/api_service.dart';
 import '../../../product/util/widget/custom_app_bar.dart';
 import '../../../product/util/widget/custom_componet.dart';
 import '../../../product/util/widget/custom_elevated_button.dart';
@@ -14,50 +18,43 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  late final IPostService _postService;
   AppStringConstants? appStringConstants = AppStringConstants.instance;
   TextEditingController textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _postService = PostService();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: CustomAppBar(title: appStringConstants!.homeTitle),
-      body: Padding(
-        padding: context.paddingXHorizontal,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              _CustomProfile(appStringConstants: appStringConstants),
-              Divider(
-                  color: context.vanillaDrop,
-                  thickness: context.thicknessValue),
-              Padding(
-                padding: context.paddingX2Top,
-                child: Stack(
-                  children: [
-                    _customFormField(),
-                    _customButtons(context),
-                  ],
+      body: SafeArea(
+        child: Padding(
+          padding: context.paddingXHorizontal,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                _CustomProfile(appStringConstants: appStringConstants),
+                Divider(
+                    color: context.vanillaDrop,
+                    thickness: context.thicknessValue),
+                Padding(
+                  padding: context.paddingX2Top,
+                  child: Stack(
+                    children: [
+                      _customFormField(),
+                      _customButtons(context),
+                    ],
+                  ),
                 ),
-              ),
-              const CustomComponents(
-                title: 'İntesaSoft',
-                subTitle: '23/3/2012',
-                profileImageUrl:
-                    'https://pbs.twimg.com/profile_images/1371396562656591874/RksZ8joM_400x400.jpg',
-                postImageUrl: 'https://picsum.photos/536/354',
-                description:
-                    'Aliquam vitae lectus suscipit, ullamcorper velit quis, elementum ligula. Morbi pulvinar neque quis ante porta imperdiet.',
-                likeCount: '3',
-                dislikeCount: '5',
-                commentCount: '223',
-                commentTitle: 'sdvvds',
-                commentDescription: 'fdskcöşöcsdlşöd',
-                commentImageUrl: '',
-                commentDislikeCount: '4',
-                commentLikeCount: '43',
-              ),
-           
-            ],
+                Test(),
+              ],
+            ),
           ),
         ),
       ),
@@ -167,3 +164,49 @@ class _CustomProfile extends StatelessWidget {
     );
   }
 }
+
+
+/*
+
+Padding(
+        padding: context.paddingXHorizontal,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _CustomProfile(appStringConstants: appStringConstants),
+              Divider(
+                  color: context.vanillaDrop,
+                  thickness: context.thicknessValue),
+              Padding(
+                padding: context.paddingX2Top,
+                child: Stack(
+                  children: [
+                    _customFormField(),
+                    _customButtons(context),
+                  ],
+                ),
+              ),
+            
+              const CustomComponents(
+                title: 'İntesaSoft',
+                subTitle: '23/3/2012',
+                profileImageUrl:
+                    'https://pbs.twimg.com/profile_images/1371396562656591874/RksZ8joM_400x400.jpg',
+                postImageUrl: 'https://picsum.photos/536/354',
+                description:
+                    'Aliquam vitae lectus suscipit, ullamcorper velit quis, elementum ligula. Morbi pulvinar neque quis ante porta imperdiet.',
+                likeCount: '3',
+                dislikeCount: '5',
+                commentCount: '223',
+                commentTitle: 'sdvvds',
+                commentDescription: 'fdskcöşöcsdlşöd',
+                commentImageUrl:
+                    'https://pbs.twimg.com/profile_images/1371396562656591874/RksZ8joM_400x400.jpg',
+                commentDislikeCount: '4',
+                commentLikeCount: '43',
+              ),
+            ],
+          ),
+        ),
+      ),
+*/

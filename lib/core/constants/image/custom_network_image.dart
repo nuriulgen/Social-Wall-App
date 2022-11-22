@@ -11,6 +11,7 @@ class CustomNetworkImage extends StatelessWidget {
     return CircleAvatar(
       radius: context.hw20,
       backgroundImage: NetworkImage(imagePath),
+      backgroundColor: Colors.transparent,
     );
   }
 }
