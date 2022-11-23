@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_social_wall/core/constants/extension/context_extension.dart';
 import 'custom_network_image.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -20,7 +21,8 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      minLeadingWidth: 0,
+      minLeadingWidth: context.minLeadingWidthValue,
+      contentPadding: EdgeInsets.zero,
       leading: CustomNetworkImage(imagePath: imageUrl),
       title: _title(context),
       subtitle: _subTitle(context),
@@ -31,7 +33,7 @@ class CustomListTile extends StatelessWidget {
 
   Text _subTitle(BuildContext context) {
     return Text(
-      title,
+      subTitle,
       style: Theme.of(context)
           .textTheme
           .bodyMedium

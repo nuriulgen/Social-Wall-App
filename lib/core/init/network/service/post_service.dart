@@ -1,17 +1,17 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import '../../../constants/app/app_constants.dart';
-import '../model/post_model.dart';
-import '../model/comment_model.dart';
-import 'api_service.dart';
 
+import '../../../constants/app/app_constants.dart';
 import '../../../constants/enums/api_enums.dart';
 import '../../../utility/utility.dart';
+import '../model/comment_model.dart';
+import '../model/post_model.dart';
+import 'api_service.dart';
 
 class PostService extends IPostService {
   late final Dio _dio;
-  PostService() : _dio = Dio(BaseOptions(baseUrl: AppConstants.BASE_URL));
+  PostService() : _dio = Dio(BaseOptions(baseUrl: AppConstants.baseUrl));
 
   @override
   Future<bool> addItemToService(PostModel postModel) async {
@@ -41,7 +41,6 @@ class PostService extends IPostService {
   Future<List<PostModel>?> fetchPostsItems() async {
     try {
       final response = await _dio.get(PostServicePaths.post.name);
-     
 
       if (response.statusCode == HttpStatus.ok) {
         final result = response.data;

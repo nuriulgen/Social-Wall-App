@@ -52,4 +52,6 @@ extension ContextExtension on BuildContext {
 
   // Value
   double get thicknessValue => 0.9;
+  double get minLeadingWidthValue => 0;
+  int get maxLinesValue => 7;
 }

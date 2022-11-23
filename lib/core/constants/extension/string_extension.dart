@@ -10,6 +10,7 @@ class AppStringConstants {
 
   //STRING
   final String homeTitle = 'Sosyal Duvar';
+  final String userName = 'Nuri Ulgen';
   final String postsText = 'Gönderi';
   final String commentText = 'Yorum';
   final String addImageButton = 'Fotoğraf / Video Ekle';

@@ -23,7 +23,6 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 
 class _CustomAppBarState extends State<CustomAppBar>
     with TickerProviderStateMixin {
-  bool isLight = false;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -41,7 +40,7 @@ class _CustomAppBarState extends State<CustomAppBar>
         color: context.black,
         size: context.hw30,
       ),
-      onPressed: () {},
+      onPressed: widget.onPressed,
     );
   }
 
