@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/constants/image/custom_network_image.dart';
+import 'custom_network_image.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile(
@@ -20,6 +20,7 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      minLeadingWidth: 0,
       leading: CustomNetworkImage(imagePath: imageUrl),
       title: _title(context),
       subtitle: _subTitle(context),

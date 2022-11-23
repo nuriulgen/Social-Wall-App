@@ -13,12 +13,12 @@ class CustomComponents extends StatelessWidget {
       required this.postImageUrl,
       required this.likeCount,
       required this.dislikeCount,
-      required this.commentCount,
-      required this.commentTitle,
-      required this.commentDescription,
+      this.commentCount,
+      this.commentTitle,
+      this.commentDescription,
       this.commentLikeCount,
       this.commentDislikeCount,
-      required this.commentImageUrl})
+      this.commentImageUrl})
       : super(key: key);
 
   final String title;
@@ -28,16 +28,17 @@ class CustomComponents extends StatelessWidget {
   final String postImageUrl;
   final int likeCount;
   final int dislikeCount;
-  final int commentCount;
-  final String commentTitle;
-  final String commentDescription;
-  final String commentImageUrl;
+  final int? commentCount;
+  final String? commentTitle;
+  final String? commentDescription;
+  final String? commentImageUrl;
   final int? commentLikeCount;
   final int? commentDislikeCount;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomListTile(
             title: title, subTitle: subTitle, imageUrl: profileImageUrl),
@@ -47,6 +48,7 @@ class CustomComponents extends StatelessWidget {
           child: _postImage(context),
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
               padding: context.paddingXHorizontal,
@@ -61,6 +63,7 @@ class CustomComponents extends StatelessWidget {
           ],
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
               padding: context.paddingXHorizontal + context.paddingX2Left,
@@ -76,7 +79,7 @@ class CustomComponents extends StatelessWidget {
             ),
           ],
         ),
-        CustomListTile(
+        /*  CustomListTile(
           title: commentTitle,
           subTitle: commentDescription,
           imageUrl: commentImageUrl,
@@ -85,7 +88,7 @@ class CustomComponents extends StatelessWidget {
             color: context.vanillaDrop,
           ),
           onPressed: () {},
-        )
+        ) */
       ],
     );
   }
@@ -97,6 +100,10 @@ class CustomComponents extends StatelessWidget {
       child: Image.network(
         postImageUrl,
         fit: BoxFit.cover,
+        errorBuilder:
+            (BuildContext context, Object exception, StackTrace? stackTrace) {
+          return const Text('Error');
+        },
       ),
     );
   }
